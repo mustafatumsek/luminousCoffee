@@ -1,12 +1,8 @@
-<p align="center">
-  <img src="assets/images/hero.png" alt="Luminous Coffee" width="100%" style="border-radius: 12px;" />
-</p>
-
-<h1 align="center">☕ Luminous Coffee — Dinamik Dijital Menü Platformu</h1>
+<h1 align="center">☕ Luminous Coffee — Web Sitesi ve Dinamik Dijital Menü</h1>
 
 <p align="center">
   <strong>Eskişehir · Kanlıkavak</strong><br/>
-  <em>Statik PDF menülerden gerçek zamanlı dijital menü yönetimine geçiş.</em>
+  <em>Kurumsal web sitesi ve statik PDF menülerden gerçek zamanlı dijital menü yönetimine geçiş.</em>
 </p>
 
 <p align="center">
@@ -27,11 +23,11 @@
 | Eski Süreç (Problem) | Yeni Süreç (Çözüm) |
 |---|---|
 | Menü değişikliği için grafik tasarımcıya/ajansa bağımlılık | Kafe yöneticisi admin panelinden saniyeler içinde güncelleme yapabilir |
-| PDF menünün güncellenmesi günler, hatta haftalar sürüyordu | Değişiklikler **anlık olarak** canlı menüye yansır |
-| Her değişiklikte yeni PDF basımı ve QR kod yenileme gerekiyordu | Fiziksel QR kodlar **hiç değiştirilmeden** çalışmaya devam eder |
+| PDF menünün güncellenmesi günler sürüyordu | Değişiklikler **anlık olarak** canlı menüye yansır |
+| İşletmenin aktif bir web sitesi yoktu ve marka kimliğine zarar veriyordu | Modern ve bilgilendirici yeni web sitesi |
 | Ajans maliyeti ve zaman kaybı | **Sıfır maliyet**, tam bağımsızlık |
 
-> **Sonuç:** Kafe sahibi artık fiyat değişikliğinden yeni ürün eklemeye kadar her şeyi kendi başına, herhangi bir cihazdan, saniyeler içinde yapabilmektedir.
+> **Sonuç:** Kafe sahibi artık fiyat değişikliğinden yeni ürün eklemeye kadar her şeyi kendi başına, herhangi bir cihazdan, saniyeler içinde yapabilmektedir. Web sitesi işe müşterilere kafe hakkında bilgi vermekte ve pozitif marka algısı oluşturmaktadır.
 
 ---
 
@@ -41,7 +37,7 @@ Projenin en kritik teknik detaylarından biri, **mevcut fiziksel QR kodların hi
 
 Masalardaki QR kodlar daha önce şu URL'ye yönlendiriyordu:
 ```
-https://luminous-coffee.web.app/1/Luminous.pdf
+https://luminous-coffee.com.tr/1/Luminous.pdf
 ```
 
 Firebase Hosting'in `firebase.json` yapılandırmasına eklenen **301 (Kalıcı Yönlendirme)** kuralı sayesinde, bu URL artık otomatik olarak dinamik menü sayfasına yönlendirilmektedir:
@@ -61,7 +57,7 @@ Firebase Hosting'in `firebase.json` yapılandırmasına eklenen **301 (Kalıcı 
 ```
 
 **Kazanım:**
-- ✅ Masalardaki yüzlerce QR kod **değiştirilmedi** → baskı maliyeti **sıfır**
+- ✅ Masalardaki 50+ QR kod **değiştirilmedi** → baskı maliyeti **sıfır**
 - ✅ Müşteriler aynı QR'ı okutarak artık **canlı ve güncel** menüye erişiyor
 - ✅ Arama motorları (Google) 301 yönlendirmeyi tanır → **SEO uyumlu** geçiş
 
@@ -71,7 +67,7 @@ Firebase Hosting'in `firebase.json` yapılandırmasına eklenen **301 (Kalıcı 
 
 ### 🌐 Pazarlama Web Sitesi (`index.html`)
 - **Hero Section** — Tam ekran görsel ve CTA butonu ile etkileyici karşılama
-- **Hakkımızda** — Kafe hikayesi, öne çıkan özellikler (kaliteli kahve, taze tatlılar, rahat atmosfer)
+- **Hakkımızda** — Kafe hikayesi, öne çıkan özellikler
 - **Galeri** — Mekan, içecek ve tatlı fotoğrafları ile görsel vitrin
 - **İletişim** — Adres, telefon, çalışma saatleri ve entegre Google Maps haritası
 - **SEO Optimizasyonu** — Meta etiketler, Open Graph, semantik HTML yapısı
@@ -88,7 +84,6 @@ Firebase Hosting'in `firebase.json` yapılandırmasına eklenen **301 (Kalıcı 
 - **Firebase Authentication** ile güvenli e-posta/şifre girişi
 - **Kategori CRUD** — Yeni kategori ekleme, düzenleme, silme
 - **Ürün CRUD** — Ürün adı, fiyat, açıklama ve sıralama yönetimi
-- **Çift boyutlu fiyat desteği — `160 / 180 ₺`** formatında (küçük/büyük boy)
 - **Gerçek zamanlı güncelleme** — Değişiklikler anında menüye yansır
 - **Onay diyalogları** — Silme işlemlerinde güvenlik kontrolü
 - **Toast bildirimleri** — Her işlem için anlık geri bildirim
@@ -206,14 +201,6 @@ firebase deploy
 
 ---
 
-## 📱 Ekran Görüntüleri
-
-| Ana Sayfa | Dijital Menü | Admin Paneli |
-|---|---|---|
-| Etkileyici hero section, galeri, iletişim | Kategorili, gerçek zamanlı menü | Güvenli giriş, CRUD yönetimi |
-
----
-
 ## 🔒 Güvenlik Notları
 
 - Admin paneli **Firebase Authentication** ile korunmaktadır
@@ -226,11 +213,3 @@ firebase deploy
 ## 👨‍💻 Geliştirici
 
 **Mustafa Tümsek**
-
-Bu proje, gerçek bir işletmenin dijital dönüşüm ihtiyacına çözüm olarak geliştirilmiştir. Kullanılan teknolojiler bilinçli olarak sade tutulmuş; herhangi bir framework bağımlılığı olmadan, saf HTML/CSS/JS ile üretim kalitesinde bir ürün ortaya konmuştur.
-
----
-
-<p align="center">
-  <sub>© 2025 Luminous Coffee · Eskişehir · Tüm hakları saklıdır.</sub>
-</p>
