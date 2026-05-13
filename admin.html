@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — Luminous Coffee</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+
+    <!-- ═══════════ LOGIN SCREEN ═══════════ -->
+    <div class="login-screen" id="login-screen">
+        <div class="login-card">
+            <div class="login-logo">
+                <h1>luminous<span class="accent"> coffee</span></h1>
+                <p>Yönetim Paneli</p>
+            </div>
+
+            <div class="login-error" id="login-error">
+                <span>⚠️</span>
+                <span id="login-error-text"></span>
+            </div>
+
+            <form id="login-form" autocomplete="on">
+                <div class="form-group">
+                    <label for="login-email">E-posta</label>
+                    <input type="email" id="login-email" placeholder="admin@luminous.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Şifre</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn" id="login-btn">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════ DASHBOARD ═══════════ -->
+    <div class="dashboard" id="dashboard">
+
+        <!-- Dashboard Header -->
+        <header class="dash-header">
+            <div class="dash-header-left">
+                <span class="dash-logo">luminous<span class="accent"> coffee</span></span>
+                <span class="dash-badge">Admin</span>
+            </div>
+            <div class="dash-header-right">
+                <span class="dash-user" id="dash-user"></span>
+                <button class="logout-btn" id="logout-btn">Çıkış Yap</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dash-content">
+
+            <!-- Sidebar: Categories -->
+            <aside class="sidebar">
+                <div class="sidebar-title">
+                    <span>Kategoriler</span>
+                    <button class="add-category-btn" id="add-category-btn" title="Yeni Kategori Ekle">+</button>
+                </div>
+
+                <!-- Add Category Form -->
+                <div class="add-category-form" id="add-category-form">
+                    <input type="text" id="new-category-input" placeholder="Kategori adı...">
+                    <button class="form-btn primary" id="save-category-btn">Ekle</button>
+                    <button class="form-btn secondary" id="cancel-category-btn">İptal</button>
+                </div>
+
+                <!-- Category List -->
+                <div class="category-list" id="category-list">
+                    <!-- Rendered by JS -->
+                </div>
+            </aside>
+
+            <!-- Main Panel: Products -->
+            <main class="main-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title" id="panel-title">Ürün Yönetimi</h2>
+                    <button class="add-product-btn" id="add-product-btn" style="display: none;">
+                        <span>+</span> Yeni Ürün
+                    </button>
+                </div>
+
+                <!-- Product List -->
+                <div class="product-list" id="product-list">
+                    <!-- Rendered by JS -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state">
+                    <span class="empty-icon">📋</span>
+                    <h3>Kategori Seçin</h3>
+                    <p>Sol panelden bir kategori seçerek ürünlerini yönetebilirsiniz.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ═══════════ PRODUCT MODAL ═══════════ -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Yeni Ürün Ekle</h3>
+                <button class="modal-close" id="modal-close">✕</button>
+            </div>
+            <form id="product-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="product-name">Ürün Adı *</label>
+                    <input type="text" id="product-name" placeholder="Örn: Latte / Iced" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Fiyat *</label>
+                    <input type="text" id="product-price" placeholder="Örn: 160 /180 ₺" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-desc">Açıklama (Opsiyonel)</label>
+                    <textarea id="product-desc" placeholder="Örn: Vanilla, Caramel, Hazelnut... +30 ₺" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-order">Sıra Numarası</label>
+                    <input type="number" id="product-order" placeholder="Otomatik" min="0">
+                </div>
+                <div class="modal-footer">
+                    <button class="form-btn secondary" id="modal-cancel-btn" onclick="document.getElementById('product-modal').classList.remove('show')">İptal</button>
+                    <button class="form-btn primary" id="save-product-btn">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════ CONFIRM DIALOG ═══════════ -->
+    <div class="confirm-overlay" id="confirm-overlay">
+        <div class="confirm-dialog">
+            <div class="confirm-icon">⚠️</div>
+            <h3 id="confirm-title">Emin misiniz?</h3>
+            <p id="confirm-text">Bu işlem geri alınamaz.</p>
+            <div class="confirm-actions">
+                <button class="form-btn secondary" id="confirm-no">İptal</button>
+                <button class="form-btn danger" id="confirm-yes">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ TOAST CONTAINER ═══════════ -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
